@@ -32,6 +32,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.opentest4j.AssertionFailedError;
 
+import static io.blt.test.AssertUtils.assertValidUtilityClass;
 import static io.blt.test.assertj.AnnotationAssertions.assertHasAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TargetMethodAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TargetTypeAnnotation;
@@ -47,6 +48,11 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class AnnotationAssertionsTest {
+
+    @Test
+    void shouldBeValidUtilityClass() throws NoSuchMethodException {
+        assertValidUtilityClass(AnnotationAssertions.class);
+    }
 
     static Stream<Class<?>> assertHasAnnotationShouldThrowWhenTypeDoesntHaveAnnotation() {
         return Stream.of(TypeWithDifferentAnnotation.class, TypeWithNoAnnotation.class);

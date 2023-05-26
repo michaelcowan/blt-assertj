@@ -32,7 +32,11 @@ import org.assertj.core.internal.Failures;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AnnotationAssertions {
+public final class AnnotationAssertions {
+
+    private AnnotationAssertions() {
+        throw new IllegalAccessError("Utility class should be accessed statically and never constructed");
+    }
 
     public static <T extends Annotation> ObjectAssert<T> assertHasAnnotation(Method method, Class<T> annotation) {
         return assertThat(findAnnotationOfTypeOrFail(method.getAnnotations(), annotation));
