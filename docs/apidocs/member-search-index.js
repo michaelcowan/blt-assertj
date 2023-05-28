@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"io.blt.test.assertj","c":"AnnotationAssertions","l":"assertHasAnnotation(Class<?>, Class<T>)","u":"assertHasAnnotation(java.lang.Class,java.lang.Class)"},{"p":"io.blt.test.assertj","c":"AnnotationAssertions","l":"assertHasAnnotation(Method, Class<T>)","u":"assertHasAnnotation(java.lang.reflect.Method,java.lang.Class)"}];updateSearchResults();
