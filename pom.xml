@@ -29,7 +29,7 @@
 
     <groupId>io.blt</groupId>
     <artifactId>blt-assertj</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>blt-assertj</name>
     <description>A selection of AssertJ utilities that pull in minimal dependencies</description>
