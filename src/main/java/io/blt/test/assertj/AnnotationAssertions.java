@@ -38,7 +38,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Each method is a static factory for an annotation specific assertion object
  * i.e. each method returns {@code ObjectAssert<T extends Annotation>}.
  * </p>
- * <p>
  * e.g.
  * <pre>{@code
  * @Test
@@ -48,7 +47,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  *             .isEqualTo(Exception.class);
  * }
  * }</pre>
- * </p>
  */
 public final class AnnotationAssertions {
 
