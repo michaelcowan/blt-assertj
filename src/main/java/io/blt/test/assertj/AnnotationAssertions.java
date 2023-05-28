@@ -32,16 +32,76 @@ import org.assertj.core.internal.Failures;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Assertion factory methods that allow testing the annotations of various types.
+ * <p>
+ * Each method is a static factory for an annotation specific assertion object
+ * i.e. each method returns {@code ObjectAssert<T extends Annotation>}.
+ * </p>
+ * <p>
+ * e.g.
+ * <pre>{@code
+ * @Test
+ * void isAnnotatedAsTransactionalWithNoRollbackForException() {
+ *     assertHasAnnotation(NotificationPublisher.class, Transactional.class)
+ *             .extracting(Transactional::noRollbackFor)
+ *             .isEqualTo(Exception.class);
+ * }
+ * }</pre>
+ * </p>
+ */
 public final class AnnotationAssertions {
 
     private AnnotationAssertions() {
         throw new IllegalAccessError("Utility class should be accessed statically and never constructed");
     }
 
+    /**
+     * Asserts that a {@code Method} is annotated with a given annotation.
+     * <p>
+     * If present, an assertion object is returned for the found annotation instance, else the test fails.
+     * </p>
+     * e.g.
+     * <pre>{@code
+     * @Test
+     * void isAnnotatedAsTransactionalWithNoRollbackForException() throws Exception {
+     *     var method = NotificationPublisher.class.getMethod("sendNotification");
+     *
+     *     assertHasAnnotation(method, Transactional.class)
+     *             .extracting(Transactional::noRollbackFor)
+     *             .isEqualTo(Exception.class);
+     * }
+     * }</pre>
+     *
+     * @param method     a {@code Method} to test for the presence of {@code annotation}
+     * @param annotation the expected {@code Annotation} type
+     * @param <T>        type of {@code Annotation}
+     * @return an assertion object for the found annotation i.e. {@code ObjectAssert<T extends Annotation>}
+     */
     public static <T extends Annotation> ObjectAssert<T> assertHasAnnotation(Method method, Class<T> annotation) {
         return assertThat(findAnnotationOfTypeOrFail(method.getAnnotations(), annotation));
     }
 
+    /**
+     * Asserts that a {@code Class} is annotated with a given annotation.
+     * <p>
+     * If present, an assertion object is returned for the found annotation instance, else the test fails.
+     * </p>
+     * e.g.
+     * <pre>{@code
+     * @Test
+     * void isAnnotatedAsTransactionalWithNoRollbackForException() {
+     *     assertHasAnnotation(NotificationPublisher.class, Transactional.class)
+     *             .extracting(Transactional::noRollbackFor)
+     *             .isEqualTo(Exception.class);
+     * }
+     * }</pre>
+     *
+     * @param clazz      a {@code Class} to test for the presence of {@code annotation}
+     * @param annotation the expected {@code Annotation} type
+     * @param <T>        type of {@code Annotation}
+     * @return an assertion object for the found annotation i.e. {@code ObjectAssert<T extends Annotation>}
+     */
     public static <T extends Annotation> ObjectAssert<T> assertHasAnnotation(Class<?> clazz, Class<T> annotation) {
         return assertThat(findAnnotationOfTypeOrFail(clazz.getAnnotations(), annotation));
     }
