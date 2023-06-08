@@ -9,7 +9,7 @@
 
 The library is available via [Maven Central](https://central.sonatype.com/artifact/io.blt/blt-assertj)
 
-e.g., add the core library to your dependencies:
+e.g., to add the AssertJ library to your dependencies:
 
 ```xml
 <dependency>
@@ -17,4 +17,39 @@ e.g., add the core library to your dependencies:
     <artifactId>blt-assertj</artifactId>
     <version>1.0.0</version>
 </dependency>
+```
+
+# Documentation
+
+## API Docs
+
+[API docs](https://michaelcowan.github.io/blt-assertj/apidocs) are available for the latest release of the library.
+
+## Examples
+
+### `AnnotationAssertions`
+
+Assertion factory methods that allow testing the annotations of various types.
+
+Allow asserting that an annotation is present and also to perform assertions on the annotation itself:
+
+```java
+@Test
+void isAnnotatedAsTransactionalWithNoRollbackForException() {
+    assertHasAnnotation(NotificationPublisher.class, Transactional.class)
+        .extracting(Transactional::noRollbackFor)
+        .isEqualTo(Exception.class);
+}
+```
+
+Similarly, for `Method`:
+
+```java
+@ParameterizedTest
+@MethodSource
+void isAnnotatedAsTransactionalWithNoRollbackForException(Method method) throws Exception {
+    assertHasAnnotation(method, Transactional.class)
+        .extracting(Transactional::noRollbackFor)
+        .isEqualTo(Exception.class);
+}
 ```
