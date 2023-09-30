@@ -75,7 +75,7 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../src-html/io/blt/test/assertj/AnnotationAssertions.html#line-51">AnnotationAssertions</a></span>
+<div class="type-signature"><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../src-html/io/blt/test/assertj/AnnotationAssertions.html#line-52">AnnotationAssertions</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">Assertion factory methods that allow testing the annotations of various types.
  <p>
@@ -112,9 +112,15 @@ loadScripts(document, 'script');</script>
 <div class="block">Asserts that a <code>Class</code> is annotated with a given annotation.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T extends <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/annotation/Annotation.html" title="class or interface in java.lang.annotation" class="external-link">Annotation</a>&gt;<br>org.assertj.core.api.ObjectAssert&lt;T&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#assertHasAnnotation(java.lang.reflect.Method,java.lang.Class)" class="member-name-link">assertHasAnnotation</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&nbsp;method,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#assertHasAnnotation(java.lang.reflect.Field,java.lang.Class)" class="member-name-link">assertHasAnnotation</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Field.html" title="class or interface in java.lang.reflect" class="external-link">Field</a>&nbsp;field,
  <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;annotation)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Asserts that a <code>Field</code> is annotated with a given annotation.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T extends <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/annotation/Annotation.html" title="class or interface in java.lang.annotation" class="external-link">Annotation</a>&gt;<br>org.assertj.core.api.ObjectAssert&lt;T&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#assertHasAnnotation(java.lang.reflect.Method,java.lang.Class)" class="member-name-link">assertHasAnnotation</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&nbsp;method,
+ <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;annotation)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Asserts that a <code>Method</code> is annotated with a given annotation.</div>
 </div>
 </div>
@@ -138,7 +144,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="assertHasAnnotation(java.lang.reflect.Method,java.lang.Class)">
 <h3>assertHasAnnotation</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/annotation/Annotation.html" title="class or interface in java.lang.annotation" class="external-link">Annotation</a>&gt;</span>
-<span class="return-type">org.assertj.core.api.ObjectAssert&lt;T&gt;</span>&nbsp;<span class="element-name"><a href="../../../../src-html/io/blt/test/assertj/AnnotationAssertions.html#line-79">assertHasAnnotation</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&nbsp;method,
+<span class="return-type">org.assertj.core.api.ObjectAssert&lt;T&gt;</span>&nbsp;<span class="element-name"><a href="../../../../src-html/io/blt/test/assertj/AnnotationAssertions.html#line-80">assertHasAnnotation</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&nbsp;method,
  <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;annotation)</span></div>
 <div class="block">Asserts that a <code>Method</code> is annotated with a given annotation.
  <p>
@@ -170,7 +176,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="assertHasAnnotation(java.lang.Class,java.lang.Class)">
 <h3>assertHasAnnotation</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/annotation/Annotation.html" title="class or interface in java.lang.annotation" class="external-link">Annotation</a>&gt;</span>
-<span class="return-type">org.assertj.core.api.ObjectAssert&lt;T&gt;</span>&nbsp;<span class="element-name"><a href="../../../../src-html/io/blt/test/assertj/AnnotationAssertions.html#line-103">assertHasAnnotation</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;?&gt;&nbsp;clazz,
+<span class="return-type">org.assertj.core.api.ObjectAssert&lt;T&gt;</span>&nbsp;<span class="element-name"><a href="../../../../src-html/io/blt/test/assertj/AnnotationAssertions.html#line-104">assertHasAnnotation</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;?&gt;&nbsp;clazz,
  <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;annotation)</span></div>
 <div class="block">Asserts that a <code>Class</code> is annotated with a given annotation.
  <p>
@@ -190,6 +196,38 @@ loadScripts(document, 'script');</script>
 <dd><code>T</code> - type of <code>Annotation</code></dd>
 <dt>Parameters:</dt>
 <dd><code>clazz</code> - a <code>Class</code> to test for the presence of <code>annotation</code></dd>
+<dd><code>annotation</code> - the expected <code>Annotation</code> type</dd>
+<dt>Returns:</dt>
+<dd>an assertion object for the found annotation i.e. <code>ObjectAssert&lt;T extends Annotation&gt;</code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="assertHasAnnotation(java.lang.reflect.Field,java.lang.Class)">
+<h3>assertHasAnnotation</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/annotation/Annotation.html" title="class or interface in java.lang.annotation" class="external-link">Annotation</a>&gt;</span>
+<span class="return-type">org.assertj.core.api.ObjectAssert&lt;T&gt;</span>&nbsp;<span class="element-name"><a href="../../../../src-html/io/blt/test/assertj/AnnotationAssertions.html#line-130">assertHasAnnotation</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Field.html" title="class or interface in java.lang.reflect" class="external-link">Field</a>&nbsp;field,
+ <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;annotation)</span></div>
+<div class="block">Asserts that a <code>Field</code> is annotated with a given annotation.
+ <p>
+ If present, an assertion object is returned for the found annotation instance, else the test fails.
+ </p>
+ e.g.
+ <pre><code>
+ @Test
+ void isAnnotatedAsDigitsWithFractionOfTwo() {
+     var method = Invoice.class.getField("price");
+
+     assertHasAnnotation(field, Digits.class)
+             .extracting(Digits::fraction)
+             .isEqualTo(2);
+ }
+ </code></pre></div>
+<dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>T</code> - type of <code>Annotation</code></dd>
+<dt>Parameters:</dt>
+<dd><code>field</code> - a <code>Field</code> to test for the presence of <code>annotation</code></dd>
 <dd><code>annotation</code> - the expected <code>Annotation</code> type</dd>
 <dt>Returns:</dt>
 <dd>an assertion object for the found annotation i.e. <code>ObjectAssert&lt;T extends Annotation&gt;</code></dd>

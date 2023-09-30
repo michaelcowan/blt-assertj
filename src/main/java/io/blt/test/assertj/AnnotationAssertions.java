@@ -25,6 +25,7 @@
 package io.blt.test.assertj;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import org.assertj.core.api.ObjectAssert;
@@ -102,6 +103,32 @@ public final class AnnotationAssertions {
      */
     public static <T extends Annotation> ObjectAssert<T> assertHasAnnotation(Class<?> clazz, Class<T> annotation) {
         return assertThat(findAnnotationOfTypeOrFail(clazz.getAnnotations(), annotation));
+    }
+
+    /**
+     * Asserts that a {@code Field} is annotated with a given annotation.
+     * <p>
+     * If present, an assertion object is returned for the found annotation instance, else the test fails.
+     * </p>
+     * e.g.
+     * <pre>{@code
+     * @Test
+     * void isAnnotatedAsDigitsWithFractionOfTwo() {
+     *     var method = Invoice.class.getField("price");
+     *
+     *     assertHasAnnotation(field, Digits.class)
+     *             .extracting(Digits::fraction)
+     *             .isEqualTo(2);
+     * }
+     * }</pre>
+     *
+     * @param field      a {@code Field} to test for the presence of {@code annotation}
+     * @param annotation the expected {@code Annotation} type
+     * @param <T>        type of {@code Annotation}
+     * @return an assertion object for the found annotation i.e. {@code ObjectAssert<T extends Annotation>}
+     */
+    public static <T extends Annotation> ObjectAssert<T> assertHasAnnotation(Field field, Class<T> annotation) {
+        return assertThat(findAnnotationOfTypeOrFail(field.getAnnotations(), annotation));
     }
 
     private static <T extends Annotation> T findAnnotationOfTypeOrFail(Annotation[] annotations, Class<T> type) {

@@ -24,6 +24,7 @@
 
 package io.blt.test.assertj;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -34,12 +35,17 @@ import org.opentest4j.AssertionFailedError;
 
 import static io.blt.test.AssertUtils.assertValidUtilityClass;
 import static io.blt.test.assertj.AnnotationAssertions.assertHasAnnotation;
+import static io.blt.test.assertj.testable.AnnotatedElements.TargetFieldAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TargetMethodAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TargetTypeAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TypeWithDefaultTargetAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TypeWithDifferentAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TypeWithNoAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TypeWithValueTargetAnnotation;
+import static io.blt.test.assertj.testable.AnnotatedElements.fieldWithDefaultTargetAnnotation;
+import static io.blt.test.assertj.testable.AnnotatedElements.fieldWithDifferentAnnotation;
+import static io.blt.test.assertj.testable.AnnotatedElements.fieldWithNoAnnotations;
+import static io.blt.test.assertj.testable.AnnotatedElements.fieldWithValueTargetAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.methodWithDefaultTargetAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.methodWithDifferentAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.methodWithNoAnnotations;
@@ -135,6 +141,48 @@ class AnnotationAssertionsTest {
         assertThatNoException()
                 .isThrownBy(() -> objectAssert
                         .extracting(TargetMethodAnnotation::name)
+                        .isEqualTo(expected));
+    }
+
+    public static Stream<Field> assertHasAnnotationShouldThrowWhenFieldDoesntHaveAnnotation() {
+        return Stream.of(fieldWithNoAnnotations, fieldWithDifferentAnnotation);
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    void assertHasAnnotationShouldThrowWhenFieldDoesntHaveAnnotation(Field field) {
+        assertThatExceptionOfType(AssertionError.class)
+                .isThrownBy(() -> assertHasAnnotation(field, TargetFieldAnnotation.class))
+                .withMessage("Cannot find annotation of type TargetFieldAnnotation");
+    }
+
+    @Test
+    void assertHasAnnotationShouldReturnObjectAssertForFieldWithFailCase() {
+        var objectAssert = assertHasAnnotation(fieldWithDefaultTargetAnnotation, TargetFieldAnnotation.class);
+
+        assertThatExceptionOfType(AssertionFailedError.class)
+                .isThrownBy(() -> objectAssert
+                        .extracting(TargetFieldAnnotation::name)
+                        .isEqualTo("wrong name"))
+                .withMessage(
+                        System.lineSeparator() + "expected: \"wrong name\"" +
+                        System.lineSeparator() + " but was: \"field annotation default name\"");
+    }
+
+    static Stream<Arguments> assertHasAnnotationShouldReturnObjectAssertForFieldWithSuccessCase() {
+        return Stream.of(
+                Arguments.arguments(fieldWithDefaultTargetAnnotation, "field annotation default name"),
+                Arguments.arguments(fieldWithValueTargetAnnotation, "field annotation value name"));
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    void assertHasAnnotationShouldReturnObjectAssertForFieldWithSuccessCase(Field field, String expected) {
+        var objectAssert = assertHasAnnotation(field, TargetFieldAnnotation.class);
+
+        assertThatNoException()
+                .isThrownBy(() -> objectAssert
+                        .extracting(TargetFieldAnnotation::name)
                         .isEqualTo(expected));
     }
 
