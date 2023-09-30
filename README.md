@@ -53,3 +53,15 @@ void isAnnotatedAsTransactionalWithNoRollbackForException(Method method) throws 
         .isEqualTo(Exception.class);
 }
 ```
+
+Similarly, for `Field`:
+
+```java
+@ParameterizedTest
+@MethodSource
+void isAnnotatedAsDigitsWithTwoFractionalDigits(Field field) {
+    assertHasAnnotation(field, Digits.class)
+        .extracting(Digits::fraction)
+        .isEqualTo(2);
+}
+```

@@ -28,6 +28,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
@@ -66,7 +67,29 @@ public final class AnnotatedElements {
     @Retention(RetentionPolicy.RUNTIME)
     public @interface DifferentMethodAnnotation {}
 
+    @Target(ElementType.FIELD)
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface TargetFieldAnnotation {
+        String name() default "field annotation default name";
+    }
+
+    @Target(ElementType.FIELD)
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface DifferentFieldAnnotation {}
+
     public static class MethodTests {
+
+        @TargetFieldAnnotation
+        public String fieldWithDefaultTargetAnnotation;
+
+        @TargetFieldAnnotation(name = "field annotation value name")
+        public String fieldWithValueTargetAnnotation;
+
+        @DifferentFieldAnnotation
+        public String fieldWithDifferentAnnotation;
+
+        public String fieldWithNoAnnotations;
+
         @TargetMethodAnnotation
         public void methodWithDefaultTargetAnnotation() {}
 
@@ -85,11 +108,23 @@ public final class AnnotatedElements {
                 throw new RuntimeException(e);
             }
         }
+
+        private static Field field(String name) {
+            try {
+                return MethodTests.class.getField(name);
+            } catch (NoSuchFieldException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public static Method methodWithDefaultTargetAnnotation = MethodTests.method("methodWithDefaultTargetAnnotation");
     public static Method methodWithValueTargetAnnotation = MethodTests.method("methodWithValueTargetAnnotation");
     public static Method methodWithDifferentAnnotation = MethodTests.method("methodWithDifferentAnnotation");
     public static Method methodWithNoAnnotations = MethodTests.method("methodWithNoAnnotations");
+    public static Field fieldWithDefaultTargetAnnotation = MethodTests.field("fieldWithDefaultTargetAnnotation");
+    public static Field fieldWithValueTargetAnnotation = MethodTests.field("fieldWithValueTargetAnnotation");
+    public static Field fieldWithDifferentAnnotation = MethodTests.field("fieldWithDifferentAnnotation");
+    public static Field fieldWithNoAnnotations = MethodTests.field("fieldWithNoAnnotations");
 
 }
