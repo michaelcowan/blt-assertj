@@ -15,7 +15,7 @@ e.g., to add the AssertJ library to your dependencies:
 <dependency>
     <groupId>io.blt</groupId>
     <artifactId>blt-assertj</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
