@@ -28,7 +28,7 @@
 
     <groupId>io.blt</groupId>
     <artifactId>blt-assertj</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <name>blt-assertj</name>
     <description>A selection of AssertJ utilities that pull in minimal dependencies</description>
@@ -52,7 +52,7 @@
         <connection>scm:git:git://github.com/michaelcowan/blt-assertj.git</connection>
         <developerConnection>scm:git:ssh://github.com/michaelcowan/blt-assertj.git</developerConnection>
         <url>https://github.com/michaelcowan/blt-assertj</url>
-        <tag>HEAD</tag>
+        <tag>blt-assertj-1.0.1</tag>
     </scm>
 
     <properties>
