@@ -4,6 +4,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.blt/blt-assertj.svg)](https://central.sonatype.com/artifact/io.blt/blt-assertj)
 [![CircleCI](https://img.shields.io/circleci/build/github/michaelcowan/blt-assertj/master.svg)](https://dl.circleci.com/status-badge/redirect/gh/michaelcowan/blt-assertj/tree/master)
 [![Codecov](https://img.shields.io/codecov/c/github/michaelcowan/blt-assertj)](https://codecov.io/github/michaelcowan/blt-assertj)
+[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/michaelcowan/blt-assertj)](https://www.codefactor.io/repository/github/michaelcowan/blt-assertj)
 
 # Installation
 
