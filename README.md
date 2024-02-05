@@ -1,7 +1,9 @@
 # blt-assertj
 > A selection of [AssertJ](http://joel-costigliola.github.io/assertj) utilities that pull in minimal dependencies
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/michaelcowan/blt-assertj/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/michaelcowan/blt-assertj/tree/master)
+[![Maven Central](https://img.shields.io/maven-central/v/io.blt/blt-assertj.svg)](https://central.sonatype.com/artifact/io.blt/blt-assertj)
+[![CircleCI](https://img.shields.io/circleci/build/github/michaelcowan/blt-assertj/master.svg)](https://dl.circleci.com/status-badge/redirect/gh/michaelcowan/blt-assertj/tree/master)
+[![Codecov](https://img.shields.io/codecov/c/github/michaelcowan/blt-assertj)](https://codecov.io/github/michaelcowan/blt-assertj)
 
 # Installation
 
