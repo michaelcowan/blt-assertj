@@ -62,7 +62,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <assertj.version>3.27.3</assertj.version>
-        <junit.version>5.13.2</junit.version>
+        <junit.version>5.13.3</junit.version>
 
         <release-plugin.version>3.1.1</release-plugin.version>
         <source-plugin.version>3.3.1</source-plugin.version>
