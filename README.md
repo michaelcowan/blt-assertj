@@ -19,13 +19,13 @@ e.g., to add the AssertJ library to your dependencies:
 <dependency>
     <groupId>io.blt</groupId>
     <artifactId>blt-assertj</artifactId>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
 ### Gradle
 ```groovy
-implementation 'io.blt:blt-assertj:1.0.2'
+implementation 'io.blt:blt-assertj:1.1.0'
 ```
 
 # Documentation
