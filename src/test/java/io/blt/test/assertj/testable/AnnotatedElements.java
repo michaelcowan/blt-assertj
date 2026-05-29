@@ -30,7 +30,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-
 /**
  * Holds testable elements for annotation testing
  */
@@ -76,6 +75,17 @@ public final class AnnotatedElements {
     @Target(ElementType.FIELD)
     @Retention(RetentionPolicy.RUNTIME)
     public @interface DifferentFieldAnnotation {}
+
+    @Target(ElementType.TYPE_USE)
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface TargetTypeUseAnnotation {
+        String name() default "type use annotation default name";
+    }
+
+    public static class ClassWithTypeUseAnnotatedField {
+        @TargetTypeUseAnnotation
+        public String typeUseAnnotatedField;
+    }
 
     public static class MethodTests {
 

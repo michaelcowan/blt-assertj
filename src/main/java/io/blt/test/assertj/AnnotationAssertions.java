@@ -28,6 +28,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.stream.Stream;
 import org.assertj.core.api.ObjectAssert;
 import org.assertj.core.internal.Failures;
 
@@ -128,7 +129,12 @@ public final class AnnotationAssertions {
      * @return an assertion object for the found annotation i.e. {@code ObjectAssert<T extends Annotation>}
      */
     public static <T extends Annotation> ObjectAssert<T> assertHasAnnotation(Field field, Class<T> annotation) {
-        return assertThat(findAnnotationOfTypeOrFail(field.getAnnotations(), annotation));
+        var annotations = Stream.concat(
+                        Arrays.stream(field.getAnnotations()),
+                        Arrays.stream(field.getAnnotatedType().getAnnotations()))
+                .distinct()
+                .toArray(Annotation[]::new);
+        return assertThat(findAnnotationOfTypeOrFail(annotations, annotation));
     }
 
     private static <T extends Annotation> T findAnnotationOfTypeOrFail(Annotation[] annotations, Class<T> type) {

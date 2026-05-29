@@ -35,6 +35,8 @@ import org.opentest4j.AssertionFailedError;
 
 import static io.blt.test.AssertUtils.assertValidUtilityClass;
 import static io.blt.test.assertj.AnnotationAssertions.assertHasAnnotation;
+import static io.blt.test.assertj.testable.AnnotatedElements.ClassWithTypeUseAnnotatedField;
+import static io.blt.test.assertj.testable.AnnotatedElements.TargetTypeUseAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TargetFieldAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TargetMethodAnnotation;
 import static io.blt.test.assertj.testable.AnnotatedElements.TargetTypeAnnotation;
@@ -184,6 +186,14 @@ class AnnotationAssertionsTest {
                 .isThrownBy(() -> objectAssert
                         .extracting(TargetFieldAnnotation::name)
                         .isEqualTo(expected));
+    }
+
+    @Test
+    void assertHasAnnotationShouldFindTypeUseAnnotationOnField() throws NoSuchFieldException {
+        var field = ClassWithTypeUseAnnotatedField.class.getField("typeUseAnnotatedField");
+
+        assertThatNoException()
+                .isThrownBy(() -> assertHasAnnotation(field, TargetTypeUseAnnotation.class));
     }
 
 }
